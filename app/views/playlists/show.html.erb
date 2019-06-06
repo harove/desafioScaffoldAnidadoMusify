@@ -10,5 +10,57 @@
   <%= @playlist.user.name %>
 </p>
 
+
+<%= form_with(model: [@playlist, @song], local: true) do |form| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this @song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+<div class="field">
+    <%= form.label :artist %>
+    <%= form.text_field :artist %>
+  </div>
+
+
+ 
+
+
+<% @playlist.songs.each do |song| %>
+  <p>  <%= song.name %> / <%= song.artist %>  </p>
+  <%= link_to  "Delete", playlist_delete_song_path(@playlist,song), method: :delete%>
+<% end %>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>

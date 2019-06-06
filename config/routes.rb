@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :playlists do
     post 'songs', to: 'songs#create'
+    delete 'songs/:id', to: 'songs#destroy', as: 'delete_song'
   end
 
 

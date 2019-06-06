@@ -10,6 +10,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   # GET /playlists/1.json
   def show
+    @song = Song.new
   end
 
   # GET /playlists/new
@@ -27,6 +28,7 @@ class PlaylistsController < ApplicationController
   # POST /playlists.json
   def create
     @playlist = Playlist.new(playlist_params)
+    @users_array = User.all.map{|x| [x.name, x.id]} 
   
     respond_to do |format|
       if @playlist.save
