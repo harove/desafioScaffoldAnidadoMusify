@@ -15,17 +15,19 @@ class PlaylistsController < ApplicationController
   # GET /playlists/new
   def new
     @playlist = Playlist.new
+    @users_array = User.all.map{|x| [x.name, x.id]} 
   end
 
   # GET /playlists/1/edit
   def edit
+    @users_array = User.all.map{|x| [x.name, x.id]} 
   end
 
   # POST /playlists
   # POST /playlists.json
   def create
     @playlist = Playlist.new(playlist_params)
-
+  
     respond_to do |format|
       if @playlist.save
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
