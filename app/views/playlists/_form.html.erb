@@ -18,10 +18,8 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.select :user_id, @users_array, prompt: "Seleccione usuario" %>
+    <%= form.select :user_id, @users_array %>
   </div>
-
-
 
   <div class="actions">
     <%= form.submit %>

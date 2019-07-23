@@ -8,9 +8,12 @@
 
 User.destroy_all
 
-10.times do |i|
-   User.create({
-      name: Faker::Name.name,
-      email: Faker::Internet.email
-   })
+10.times do
+   User.create(name: Faker::Name.name, email: Faker::Internet.email)
 end
+# 10.times do |i|
+#    User.create({
+#       name: Faker::Name.name,
+#       email: Faker::Internet.email
+#    })
+# end

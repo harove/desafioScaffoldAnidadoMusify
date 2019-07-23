@@ -34,15 +34,10 @@
     <%= form.text_field :artist %>
   </div>
 
-
- 
-
-
 <% @playlist.songs.each do |song| %>
   <p>  <%= song.name %> / <%= song.artist %>  </p>
   <%= link_to  "Delete", playlist_delete_song_path(@playlist,song), method: :delete%>
 <% end %>
-
 
 
   <div class="actions">

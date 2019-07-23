@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
   def index
     @playlists = Playlist.all
   end
-
+  
   # GET /playlists/1
   # GET /playlists/1.json
   def show
@@ -44,6 +44,7 @@ class PlaylistsController < ApplicationController
   # PATCH/PUT /playlists/1
   # PATCH/PUT /playlists/1.json
   def update
+    @users_array = User.all.map{|x| [x.name, x.id]} 
     respond_to do |format|
       if @playlist.update(playlist_params)
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
